@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/TaskList';
 import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/ButtonDispList';
 import {Form} from './components/form/form';
+import {Loader} from './components/loader/loader';
 
 
 const App = () => {
 
-    let taskListState = [
+    const taskListState = [
         {
             id: 1,
             name: 'learn js',
@@ -34,9 +35,19 @@ const App = () => {
         },
     ];
 
-    const [taskList, setTaskList] = useState(taskListState);
+    const [taskList, setTaskList] = useState(null);
     const [displayedList, setDisplayedList] = useState('all');
     const [inputFilterValue, setInputFilterValue] = useState('');
+    const[isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(()=>{
+        setTimeout(() => {
+            setTaskList(taskListState);
+            setIsLoaded(true);
+        }, 2000);
+    },[]);
+
+
 
 
     const importanceTask = (id) => {
@@ -105,23 +116,27 @@ const App = () => {
     }
 
 
-    return (
-        <div>
-            <div className='panel'>
-                <div>
-                    <Form addNewTask={addNewTask}/>
-                </div>
-                <input onChange={inputHandler} value={inputFilterValue} type="text"/>
-                <div>
-                    <ButtonDispList displayList={displayList}/>
-                </div>
-            </div>
+    if(!isLoaded){
+        return <Loader/>;
+    } else{
+        return (
             <div>
-                <TaskList taskList={newTaskList} deleteTask={deleteTask}
-                          importanceTask={importanceTask} activeTask={activeTask}/>
+                <div className='panel'>
+                    <div>
+                        <Form addNewTask={addNewTask}/>
+                    </div>
+                    <input onChange={inputHandler} value={inputFilterValue} type="text"/>
+                    <div>
+                        <ButtonDispList displayList={displayList}/>
+                    </div>
+                </div>
+                <div>
+                    <TaskList taskList={newTaskList} deleteTask={deleteTask}
+                              importanceTask={importanceTask} activeTask={activeTask}/>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 
