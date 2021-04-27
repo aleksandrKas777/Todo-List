@@ -1,4 +1,4 @@
-import React, {useState, Component, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/TaskList';
 import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/ButtonDispList';
