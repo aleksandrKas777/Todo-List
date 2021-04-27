@@ -49,7 +49,8 @@ const App = () => {
 
 
     const importanceTask = (id) => {
-        setTaskList((prevState) => {
+
+        const stateImportanceTask = (prevState => {
             const newTaskList = prevState.map(item => {
                 if (item.id === id) {
                     item.importance = (item.importance === false ? true : false);
@@ -58,11 +59,13 @@ const App = () => {
             });
             return newTaskList;
         });
+
+        setTaskList(stateImportanceTask);
     };
 
 
     const activeTask = (id) => {
-        setTaskList((prevState) => {
+        const stateActiveTask = (prevState) => {
             const newTaskList = prevState.map(item => {
                 if (item.id === id) {
                     item.active = (item.active === false ? true : false);
@@ -70,15 +73,17 @@ const App = () => {
                 return item;
             });
             return newTaskList;
-        });
+        };
+        setTaskList(stateActiveTask);
     };
 
 
     const deleteTask = (id) => {
-        setTaskList((prevState) => {
+        const stateDeleteTask = (prevState) => {
             const newTaskList = (prevState.filter(item => item.id !== id));
             return newTaskList;
-        });
+        };
+        setTaskList(stateDeleteTask);
     };
 
     const displayList = (key) => setDisplayedList(key);
@@ -86,7 +91,7 @@ const App = () => {
     const filteredTaskList = () => taskList.filter(item => item.name.includes(inputFilterValue));
 
     const addNewTask = (newTaskName) => {
-        setTaskList((prevState) => {
+        const stateAddNewTask = (prevState) => {
             const arrId = prevState.map(item => item.id);
             const newId = Math.max.apply(null, arrId) + 1;
 
@@ -98,7 +103,8 @@ const App = () => {
             };
             prevState.push(newTask);
             return prevState;
-        });
+        };
+        setTaskList(stateAddNewTask);
     };
 
     let newTaskList = null;
