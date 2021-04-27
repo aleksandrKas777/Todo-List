@@ -51,7 +51,8 @@ const App = () => {
     const importanceTask = (id) => {
 
         const stateImportanceTask = (prevState => {
-            const newTaskList = prevState.map(item => {
+            const newArr = prevState;
+            const newTaskList = newArr.map(item => {
                 if (item.id === id) {
                     item.importance = (item.importance === false ? true : false);
                 }
@@ -63,10 +64,10 @@ const App = () => {
         setTaskList(stateImportanceTask);
     };
 
-
     const activeTask = (id) => {
         const stateActiveTask = (prevState) => {
-            const newTaskList = prevState.map(item => {
+            const newArr = prevState;
+            const newTaskList = newArr.map(item => {
                 if (item.id === id) {
                     item.active = (item.active === false ? true : false);
                 }
@@ -77,22 +78,25 @@ const App = () => {
         setTaskList(stateActiveTask);
     };
 
-
     const deleteTask = (id) => {
         const stateDeleteTask = (prevState) => {
-            const newTaskList = (prevState.filter(item => item.id !== id));
-            return newTaskList;
+            const newArr = prevState;
+            return (newArr.filter(item => item.id !== id));
         };
         setTaskList(stateDeleteTask);
     };
 
+
     const displayList = (key) => setDisplayedList(key);
     const inputHandler = (e) => setInputFilterValue(e.target.value);
+
     const filteredTaskList = () => taskList.filter(item => item.name.includes(inputFilterValue));
+
 
     const addNewTask = (newTaskName) => {
         const stateAddNewTask = (prevState) => {
-            const arrId = prevState.map(item => item.id);
+            const newArr = prevState;
+            const arrId = newArr.map(item => item.id);
             const newId = Math.max.apply(null, arrId) + 1;
 
             const newTask = {
