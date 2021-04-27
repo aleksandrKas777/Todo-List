@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 export const Form = ({addNewTask}) => {
     const [newTask, setInputNewTask] = useState('');
@@ -15,4 +16,7 @@ export const Form = ({addNewTask}) => {
             </button>
         </div>
     );
+};
+Form.propTypes = {
+    addNewTask: PropTypes.func.isRequired
 };

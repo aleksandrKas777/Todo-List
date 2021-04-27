@@ -38,16 +38,14 @@ const App = () => {
     const [taskList, setTaskList] = useState(null);
     const [displayedList, setDisplayedList] = useState('all');
     const [inputFilterValue, setInputFilterValue] = useState('');
-    const[isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         setTimeout(() => {
             setTaskList(taskListState);
             setIsLoaded(true);
         }, 2000);
-    },[]);
-
-
+    }, []);
 
 
     const importanceTask = (id) => {
@@ -116,9 +114,9 @@ const App = () => {
     }
 
 
-    if(!isLoaded){
+    if (!isLoaded) {
         return <Loader/>;
-    } else{
+    } else {
         return (
             <div>
                 <div className='panel'>
