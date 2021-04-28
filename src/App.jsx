@@ -49,39 +49,41 @@ const App = () => {
 
 
     const importanceTask = (id) => {
-
         const stateImportanceTask = (prevState => {
-            const newArr = prevState;
-            const newTaskList = newArr.map(item => {
-                if (item.id === id) {
-                    item.importance = (item.importance === false ? true : false);
-                }
-                return item;
+            const newTaskList = prevState.map(item => {
+                return {
+                    ...item,
+                    importance: item.id === id ? !item.importance : item.importance
+                };
             });
             return newTaskList;
         });
-
         setTaskList(stateImportanceTask);
     };
 
+
     const activeTask = (id) => {
         const stateActiveTask = (prevState) => {
-            const newArr = prevState;
-            const newTaskList = newArr.map(item => {
-                if (item.id === id) {
-                    item.active = (item.active === false ? true : false);
-                }
-                return item;
+            const newTaskList = prevState.map(item => {
+                return {
+                    ...item,
+                    active: item.id === id ? !item.active : item.active
+                };
             });
             return newTaskList;
         };
         setTaskList(stateActiveTask);
     };
 
+
     const deleteTask = (id) => {
         const stateDeleteTask = (prevState) => {
-            const newArr = prevState;
-            return (newArr.filter(item => item.id !== id));
+            const newTaskList = prevState.filter(item => {
+                if (item.id !== id) {
+                    return {...item};
+                };
+            });
+            return newTaskList;
         };
         setTaskList(stateDeleteTask);
     };
