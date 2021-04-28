@@ -97,18 +97,17 @@ const App = () => {
 
     const addNewTask = (newTaskName) => {
         const stateAddNewTask = (prevState) => {
-            const newArr = prevState;
-            const arrId = newArr.map(item => item.id);
+            const arrId = prevState.map(item => item.id);
             const newId = Math.max.apply(null, arrId) + 1;
-
             const newTask = {
                 id: newId,
                 name: newTaskName,
                 importance: true,
                 active: true
             };
-            prevState.push(newTask);
-            return prevState;
+            const stateNewTask = prevState;
+            stateNewTask.push(newTask);
+            return stateNewTask;
         };
         setTaskList(stateAddNewTask);
     };
