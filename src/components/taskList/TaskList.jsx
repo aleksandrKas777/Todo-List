@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TaskItem} from './taskItems/TaskItem';
 import PropTypes, {shape} from 'prop-types';
+import {ContextTogoList} from '../context/ContextTogoList';
 
-export const TaskList = ({taskList = [], deleteTask, importanceTask, activeTask}) => {
+export const TaskList = () => {
+    const {taskList = []} = useContext(ContextTogoList);
     return (
         <ul> список задач
             {taskList.map((item) => {
                 const {...props} = item;
-                return <TaskItem key={item.id} {...props} deleteTask={deleteTask}
-                                 importanceTask={importanceTask} activeTask={activeTask}/>;
+                return <TaskItem key={item.id} {...props} />;
             })}
         </ul>
     );
@@ -22,8 +23,5 @@ TaskList.propTypes = {
             importance: PropTypes.bool.isRequired,
             active: PropTypes.bool.isRequired
         })
-    ).isRequired,
-    deleteTask: PropTypes.func.isRequired,
-    importanceTask: PropTypes.func.isRequired,
-    activeTask: PropTypes.func.isRequired,
+    ).isRequired
 };

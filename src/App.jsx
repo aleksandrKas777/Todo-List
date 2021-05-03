@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/TaskList';
 import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/ButtonDispList';
 import {Form} from './components/form/form';
 import {Loader} from './components/loader/loader';
+import {ContextTogoList} from './components/context/ContextTogoList';
 
 
 const App = () => {
@@ -81,7 +82,8 @@ const App = () => {
             const newTaskList = prevState.filter(item => {
                 if (item.id !== id) {
                     return {...item};
-                };
+                }
+                ;
             });
             return newTaskList;
         };
@@ -125,25 +127,36 @@ const App = () => {
     }
 
 
+
+    const contextValue = {
+        deleteTask,
+        importanceTask,
+        displayList,
+        activeTask,
+        taskList: newTaskList
+    };
+
+
     if (!isLoaded) {
         return <Loader/>;
     } else {
         return (
-            <div>
-                <div className='panel'>
-                    <div>
-                        <Form addNewTask={addNewTask}/>
-                    </div>
-                    <input onChange={inputHandler} value={inputFilterValue} type="text"/>
-                    <div>
-                        <ButtonDispList displayList={displayList}/>
-                    </div>
-                </div>
+            <ContextTogoList.Provider value={contextValue}>
                 <div>
-                    <TaskList taskList={newTaskList} deleteTask={deleteTask}
-                              importanceTask={importanceTask} activeTask={activeTask}/>
+                    <div className='panel'>
+                        <div>
+                            <Form addNewTask={addNewTask}/>
+                        </div>
+                        <input onChange={inputHandler} value={inputFilterValue} type="text"/>
+                        <div>
+                            <ButtonDispList displayList={displayList}/>
+                        </div>
+                    </div>
+                    <div>
+                        <TaskList />
+                    </div>
                 </div>
-            </div>
+            </ContextTogoList.Provider>
         );
     }
 };
