@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
 import {ContextTogoList} from '../../../../context/ContextTogoList';
 
 export const ButtonImportance = ({id, importance}) => {
@@ -9,7 +8,3 @@ export const ButtonImportance = ({id, importance}) => {
         <button onClick={() => importanceTask(id)}> {buttonText}</button>);
 };
 
-ButtonImportance.PropTypes = {
-    id: PropTypes.number.isRequired,
-    importance: PropTypes.bool.isRequired,
-};

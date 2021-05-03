@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useContext} from 'react';
+import {ContextTogoList} from '../../../../context/ContextTogoList';
 
-export const ButtonDispList = ({displayList}) => {
+export const ButtonDispList = () => {
+    const {displayList} = useContext(ContextTogoList);
     return (
         <div>
             <button key={101} onClick={() => displayList('all')}>все задачи</button>
@@ -11,6 +12,4 @@ export const ButtonDispList = ({displayList}) => {
     );
 };
 
-ButtonDispList.PropTypes = {
-    displayList: PropTypes.func.isRequired
-};
+

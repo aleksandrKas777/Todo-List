@@ -5,6 +5,7 @@ import {ButtonDispList} from './components/taskList/taskItems/buttons/button-dis
 import {Form} from './components/form/form';
 import {Loader} from './components/loader/loader';
 import {ContextTogoList} from './components/context/ContextTogoList';
+import {ErrorBoundary} from './components/error/Error';
 
 
 const App = () => {
@@ -127,7 +128,6 @@ const App = () => {
     }
 
 
-
     const contextValue = {
         deleteTask,
         importanceTask,
@@ -137,28 +137,30 @@ const App = () => {
     };
 
 
-    if (!isLoaded) {
-        return <Loader/>;
-    } else {
-        return (
-            <ContextTogoList.Provider value={contextValue}>
-                <div>
-                    <div className='panel'>
+        if (!isLoaded) {
+            return <Loader/>;
+        } else {
+            return (
+                <ErrorBoundary>
+                    <ContextTogoList.Provider value={contextValue}>
                         <div>
-                            <Form addNewTask={addNewTask}/>
+                            <div className='panel'>
+                                <div>
+                                    <Form addNewTask={addNewTask}/>
+                                </div>
+                                <input onChange={inputHandler} value={inputFilterValue} type="text"/>
+                                <div>
+                                    <ButtonDispList/>
+                                </div>
+                            </div>
+                            <div>
+                                <TaskList/>
+                            </div>
                         </div>
-                        <input onChange={inputHandler} value={inputFilterValue} type="text"/>
-                        <div>
-                            <ButtonDispList displayList={displayList}/>
-                        </div>
-                    </div>
-                    <div>
-                        <TaskList />
-                    </div>
-                </div>
-            </ContextTogoList.Provider>
-        );
-    }
+                    </ContextTogoList.Provider>
+                </ErrorBoundary>
+            );
+        }
 };
 
 
