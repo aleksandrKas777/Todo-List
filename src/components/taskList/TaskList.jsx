@@ -1,9 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {TaskItem} from './taskItems/TaskItem';
-import {ContextTogoList} from '../context/ContextTogoList';
 
-export const TaskList = () => {
-    const {taskList} = useContext(ContextTogoList);
+
+export const TaskList = ({taskList}) => {
     return (
         <ul> список задач
             {taskList.map((item) => {

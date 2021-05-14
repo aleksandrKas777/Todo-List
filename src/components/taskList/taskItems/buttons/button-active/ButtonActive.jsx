@@ -1,12 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {ContextTogoList} from '../../../../context/ContextTogoList';
+import {setActiveTaskDispatcher} from '../../../../../store/dispatchers/dispatcher';
 
 export const ButtonActive = ({id, active}) => {
-    const {activeTask} = useContext(ContextTogoList);
     const buttonText = (active === false ? 'активировать задачу' : 'завершить задачу');
     return (
-        <button onClick={() => activeTask(id)}> {buttonText}</button>);
+        <button onClick={() => setActiveTaskDispatcher(id)}> {buttonText}</button>);
 };
 ButtonActive.PropTypes = {
     id: PropTypes.number.isRequired,

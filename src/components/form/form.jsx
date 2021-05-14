@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import {setNewTaskDispatcher} from '../../store/dispatchers/dispatcher';
 
-export const Form = ({addNewTask}) => {
+export const Form = () => {
     const [newTask, setInputNewTask] = useState('');
 
     const inputNewTask = (e) =>setInputNewTask(e.target.value);
@@ -11,12 +11,9 @@ export const Form = ({addNewTask}) => {
     return (
         <div>
             <input value={newTask} onChange={inputNewTask}/>
-            <button disabled={disabledButton} onClick={() => addNewTask(newTask)}>
+            <button disabled={disabledButton} onClick={() => setNewTaskDispatcher(newTask)}>
                 добавить запись
             </button>
         </div>
     );
-};
-Form.propTypes = {
-    addNewTask: PropTypes.func.isRequired
 };
