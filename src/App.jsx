@@ -50,10 +50,14 @@ export const App = () => {
         <ErrorBoundary>
             <div>
                 <div className='panel'>
-                    <div>
+                    <div className='addTask'>
                         <Form/>
+
                     </div>
-                    <input onChange={inputHandler} value={inputFilterValue} type="text"/>
+                    <div className='search'>
+                        <input onChange={inputHandler}
+                               value={inputFilterValue} type="text" placeholder='начните вводить для поиска'/>
+                    </div>
                     <div>
                         {<ButtonDisplayList/>}
                     </div>

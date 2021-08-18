@@ -6,7 +6,7 @@ const sliceConfig = {
         taskList: null,
         isLoaded: false,
         inputFilterValue: '',
-        displayedList: 'all'
+        displayedList: 'all',
     },
     reducers: {
         setTaskList: (state, action) => {

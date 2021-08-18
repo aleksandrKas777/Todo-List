@@ -27,7 +27,6 @@
       "react-app/jest"
     ]
   },
-  "homepage": "/togo-list-func/build/",
   "browserslist": {
     "production": [
       ">0.2%",
