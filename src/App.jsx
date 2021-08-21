@@ -58,7 +58,8 @@ export const App = () => {
                         <input onChange={inputHandler}
                                value={inputFilterValue} type="text" placeholder='начните вводить для поиска'/>
                     </div>
-                    <div>
+                    <div className='title'><h1>список задач</h1></div>
+                    <div className='buttonTask'>
                         {<ButtonDisplayList/>}
                     </div>
                 </div>

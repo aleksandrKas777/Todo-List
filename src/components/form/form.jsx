@@ -6,7 +6,7 @@ export const Form = () => {
 
     const inputNewTask = (e) =>setInputNewTask(e.target.value);
 
-    const inputNewTaskDis = (e) => {
+    const inputNewTaskClear = (e) => {
         setNewTaskDispatcher(e);
         setInputNewTask('');
     };
@@ -25,7 +25,7 @@ export const Form = () => {
         <>
             <input value={newTask} onChange={inputNewTask} onKeyPress={(e)=>keyPress(e)}/>
             <div> </div>
-            <button disabled={disabledButton} onClick={() => inputNewTaskDis(newTask)}>
+            <button disabled={disabledButton} onClick={() => inputNewTaskClear(newTask)}>
                 добавить запись
             </button>
         </>

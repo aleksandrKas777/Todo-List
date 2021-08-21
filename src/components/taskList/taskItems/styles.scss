@@ -1,17 +1,27 @@
 .line{
+    box-sizing: border-box;
     border: 1px solid black;
     min-height: 100px;
     min-width: 300px;
     display: flex;
     justify-content: space-between;
     background-color: blanchedalmond;
-    button{
-        background-color: rgb(246, 186, 19);
+    .btn{
+        margin-right: 5px;
+        background-color: #6488f5;
         align-self: center;
+        border: none;
+        &:hover{
+            background-color: #809cf1;
+           color: #809cf1;
+        }
     }    
+}
+svg{
+    height: 30px;
+    width: auto;
 }
 .buttonLine{
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }

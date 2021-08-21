@@ -4,7 +4,7 @@ import {TaskItem} from './taskItems/TaskItem';
 
 export const TaskList = ({taskList}) => {
     return (
-        <ul> список задач
+        <ul>
             {taskList.map((item) => {
                 const {...props} = item;
                 return <TaskItem key={item.id} {...props} />;
