@@ -1,25 +1,44 @@
 .line{
     box-sizing: border-box;
-    border: 1px solid black;
-    min-height: 100px;
+    border-top: 1px solid black;
+    min-height: 50px;
     min-width: 300px;
     display: flex;
-    justify-content: space-between;
-    background-color: blanchedalmond;
+    .taskRotate{;
+        display: flex;
+        flex-grow: 2;
+        justify-content: space-between;
+    }
     .btn{
         margin-right: 5px;
-        background-color: #6488f5;
         align-self: center;
         border: none;
-        &:hover{
-            background-color: #809cf1;
-           color: #809cf1;
+        .rotate{
+            height: 30px;
+            width: auto;
+            &:hover{
+                transform: scale(1.5);
+                transition: all 0.3s ease-out;
+
+            }
         }
-    }    
-}
-svg{
-    height: 30px;
-    width: auto;
+        .checkCompleted{
+            margin-left: 7px;
+            height: 30px;
+            &:hover{
+                transform: scale(1.5);
+                transition: all 0.3s ease-out;
+
+            }
+        }
+    }
+    .importanceMark{
+        width: 30px;
+    }
+    .tasks{
+        display: flex;
+        align-items: center;
+    }
 }
 .buttonLine{
     display: flex;

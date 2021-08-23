@@ -1,8 +1,15 @@
 @import 'reset';
 @import '../components/taskList/taskItems/styles.scss';
 @import "../components/loader/styles.scss";
+body{
+    background-color: #0051ff;
+}
 #root{
+    height: 100vh;
     padding: 5px;
+    background-color: #0080ff;
+    max-width: 900px;
+    margin: 0 auto;
 }
 ul{font-size: 40px;
     li{
@@ -18,7 +25,7 @@ ul{font-size: 40px;
         margin-left: 35px;
     }
     button{
-        background-color:rgb(100, 136, 245);
+        background-color: #5500ff;
         font-size: 20px;
     }
     .addTask{
