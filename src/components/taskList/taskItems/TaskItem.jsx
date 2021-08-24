@@ -8,17 +8,18 @@ import importanceTask from '../../../images/importantTask.png';
 
 
 export const TaskItem = ({id, importance, active, name}) => {
-    const style = {
-        fontWeight: (importance === false ? 'normal' : 'bolder'),
-        color: (active === false ? '#bfbfbf' : 'black')
+
+    const importanceMark = importance === true ? <img src={importanceTask} alt='important'/> : null;
+
+    const styleLine = {
+        backgroundColor: (active === false ? '#42b856' : '#d6d600')
     };
-    const importanceMark = importance === true ? <img src={importanceTask} alt='important'/> : undefined;
 
     return (
-        <li className='line'>
+        <li className='line' style={styleLine}>
             <ButtonActive active={active} id={id}/>
             <div className='taskRotate'>
-                <div className='tasks' style={style}>
+                <div className='tasks'>
                     <div className='rotate importanceMark'>{importanceMark}</div>
                     <div>{name}</div>
                 </div>

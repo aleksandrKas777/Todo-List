@@ -25,7 +25,7 @@ export const Form = () => {
         <>
             <input value={newTask} onChange={inputNewTask} onKeyPress={(e)=>keyPress(e)}/>
             <div> </div>
-            <button disabled={disabledButton} onClick={() => inputNewTaskClear(newTask)}>
+            <button className='enter' disabled={disabledButton} onClick={() => inputNewTaskClear(newTask)}>
                 добавить запись
             </button>
         </>
