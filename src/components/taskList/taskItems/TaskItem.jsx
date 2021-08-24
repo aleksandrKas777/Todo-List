@@ -12,7 +12,7 @@ export const TaskItem = ({id, importance, active, name}) => {
     const importanceMark = importance === true ? <img src={importanceTask} alt='important'/> : null;
 
     const styleLine = {
-        backgroundColor: (active === false ? '#42b856' : '#d6d600')
+        backgroundColor: (active === false ? '#42b856' : '#b8b800')
     };
 
     return (
