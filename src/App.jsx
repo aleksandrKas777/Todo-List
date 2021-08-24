@@ -21,10 +21,15 @@ export const App = () => {
     const {taskList, isLoaded, inputFilterValue, displayedList} = useSelector(store => store);
 
     useEffect(() => {
-        getTasks().then(data => {
-            setTaskListDispatcher(data);
+       getTasks().then(data => {
+       setTaskListDispatcher(data);
         });
     }, []);
+
+    useEffect(()=> {
+        localStorage.setItem('todoList', JSON.stringify(taskList));
+    }, [taskList]);
+
 
     if (!isLoaded) {
         return <Loader/>;

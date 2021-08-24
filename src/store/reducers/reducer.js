@@ -43,7 +43,7 @@ const sliceConfig = {
         addNewTask: (state, action) => {
             const {taskList} = state;
             const arrId = taskList.map(item => item.id);
-            const newId = Math.max.apply(null, arrId) + 1;
+            const newId = arrId.length === 0 ? 1 : Math.max.apply(null, arrId) + 1;
             const newTask = {
                 id: newId,
                 name: action.payload,
